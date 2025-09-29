@@ -10,7 +10,6 @@
             color: #333;
             margin: 0;
             padding: 20px;
-            /* आपका नया बैकग्राउंड इमेज लिंक */
             background-image: url('https://i.ibb.co/qMGHzsMH/image.webp'); 
             background-size: cover;
             background-position: center;
@@ -24,7 +23,7 @@
             max-width: 700px;
             padding: 25px 35px;
             overflow: hidden;
-            text-align: center;
+            text-align: center; /* कंटेनर के अंदर सब कुछ सेंटर में */
         }
         .quiz-logo {
             display: block;
@@ -34,9 +33,29 @@
             border-radius: 50%;
         }
         h1, h2 { color: #1a237e; }
-        .question-block { display: none; }
-        .question-block.active { display: block; text-align: left; }
-        .options { list-style-type: none; padding: 0; margin: 0; }
+        
+        /* --- यहाँ बदलाव किए गए हैं ताकि सवाल सेंटर में दिखें --- */
+        .question-block { 
+            display: none; 
+            text-align: center; /* सवाल के टेक्स्ट को सेंटर में */
+            margin-bottom: 20px; /* सवालों के बीच थोड़ी जगह */
+        }
+        .question-block.active { 
+            display: block; 
+        }
+
+        .question-block h2 { /* सवाल के शीर्षक को सेंटर में */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .options { 
+            list-style-type: none; 
+            padding: 0; 
+            margin: 0 auto; /* ऑप्शन लिस्ट को सेंटर में */
+            max-width: 90%; /* ऑप्शन लिस्ट की अधिकतम चौड़ाई */
+            text-align: left; /* ऑप्शन के टेक्स्ट को लेफ्ट-एलाइन रखें */
+        }
         .options li {
             background-color: #f9f9f9;
             border: 1px solid #ddd;
@@ -50,6 +69,7 @@
         .correct { background-color: #dcedc8 !important; color: #2e7d32; border-color: #a5d6a7 !important; font-weight: bold; }
         .incorrect { background-color: #ffcdd2 !important; color: #c62828; border-color: #ef9a9a !important; font-weight: bold; }
         .answered .options { pointer-events: none; }
+
         .results-block { display: none; }
         .results-block h2 { font-size: 2.2em; }
         #rank-heading {
@@ -107,7 +127,7 @@
         <div class="question-block"><h2>3. How will $GLMR tokens be used within DataHaven?</h2><ul class="options"><li>A) They will be burned</li><li data-correct="true">B) They can be re-staked</li><li>C) Only for governance</li><li>D) No utility at all</li></ul></div>
         <div class="question-block"><h2>4. According to the tokenomics, what is the total Genesis Supply?</h2><ul class="options"><li>A) 1 Billion</li><li>B) 5 Billion</li><li data-correct="true">C) 10 Billion</li><li>D) 20 Billion</li></ul></div>
         <div class="question-block"><h2>5. What percentage of tokens is allocated to the Community?</h2><ul class="options"><li>A) 20%</li><li data-correct="true">B) 50%</li><li>C) 10%</li><li>D) 30%</li></ul></div>
-        <div class="question-block"><h2>6. When does the vesting for Core Team & Contributors begin?</h2><ul class="options"><li>A) Immediately at TGE</li><li>B) After 3 months</li><li data-correct="true">C) After 9 months</li><li>D) After 12 months</li></ul></div>
+        <div class="question-block"><h2>6. When does the vesting for Core Team & Contributors begin?</h2><ul class="options"><li>A) Immediately at TGE</li><li data-correct="true">B) After 3 months</li><li>C) After 9 months</li><li>D) After 12 months</li></ul></div>
         <div class="question-block"><h2>7. How many additional tokens (inflation) will be issued in the first year?</h2><ul class="options"><li>A) 100 Million</li><li data-correct="true">B) 500 Million</li><li>C) 1 Billion</li><li>D) 50 Million</li></ul></div>
         <div class="question-block"><h2>8. What must storage operators provide in order to run services on DataHaven?</h2><ul class="options"><li>A) No guarantee required</li><li data-correct="true">B) $HAVE tokens as collateral</li><li>C) Other blockchain tokens</li><li>D) Land rights</li></ul></div>
         <div class="question-block"><h2>9. What percentage of tokens will unlock at TGE?</h2><ul class="options"><li>A) 5%</li><li data-correct="true">B) 11%</li><li>C) 20%</li><li>D) 50%</li></ul></div>
