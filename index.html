@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataHaven Quiz</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            /* आपका नया बैकग्राउंड इमेज लिंक */
+            background-image: url('https://i.ibb.co/qMGHzsMH/image.webp'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .quiz-container {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 700px;
+            padding: 25px 35px;
+            overflow: hidden;
+            text-align: center;
+        }
+        .quiz-logo {
+            display: block;
+            margin: 0 auto 20px;
+            max-width: 150px;
+            height: auto;
+            border-radius: 50%;
+        }
+        h1, h2 { color: #1a237e; }
+        .question-block { display: none; }
+        .question-block.active { display: block; text-align: left; }
+        .options { list-style-type: none; padding: 0; margin: 0; }
+        .options li {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .options li:hover { background-color: #e3f2fd; border-color: #90caf9; }
+        .correct { background-color: #dcedc8 !important; color: #2e7d32; border-color: #a5d6a7 !important; font-weight: bold; }
+        .incorrect { background-color: #ffcdd2 !important; color: #c62828; border-color: #ef9a9a !important; font-weight: bold; }
+        .answered .options { pointer-events: none; }
+        .results-block { display: none; }
+        .results-block h2 { font-size: 2.2em; }
+        #rank-heading {
+            font-size: 1.8em;
+            margin: 15px 0;
+            padding: 10px;
+            border-radius: 8px;
+            color: white;
+        }
+        .rank-excellent { background-color: #2e7d32; }
+        .rank-very-good { background-color: #43a047; }
+        .rank-good { background-color: #1e88e5; }
+        .rank-needs-improvement { background-color: #fb8c00; }
+        .rank-practice { background-color: #d32f2f; }
+        .stats-container {
+            margin: 20px auto;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            max-width: 300px;
+            text-align: left;
+        }
+        .stats-container p {
+            font-size: 1.1em;
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+        #restart-button {
+            background-color: #3f51b5;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.1em;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+        #restart-button:hover {
+            background-color: #303f9f;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        
+        <img src="https://i.ibb.co/Y7W6yHTV/9-Yu-EYF8-400x400.jpg" alt="Quiz Logo" class="quiz-logo">
+        
+        <h1 class="quiz-title">DataHaven Quiz 🚀</h1>
+        
+        <div class="question-block active"><h2>1. What is the primary utility of the $HAVE token in DataHaven?</h2><ul class="options"><li>A) Governance only</li><li>B) Gas fees only</li><li data-correct="true">C) Storage fees, gas, staking, and governance — all</li><li>D) Paying storage operators only</li></ul></div>
+        <div class="question-block"><h2>2. How can $HAVE holders help secure the DataHaven network?</h2><ul class="options"><li>A) By selling tokens</li><li data-correct="true">B) By delegating tokens to node operators</li><li>C) By freezing tokens</li><li>D) By swapping tokens</li></ul></div>
+        <div class="question-block"><h2>3. How will $GLMR tokens be used within DataHaven?</h2><ul class="options"><li>A) They will be burned</li><li data-correct="true">B) They can be re-staked</li><li>C) Only for governance</li><li>D) No utility at all</li></ul></div>
+        <div class="question-block"><h2>4. According to the tokenomics, what is the total Genesis Supply?</h2><ul class="options"><li>A) 1 Billion</li><li>B) 5 Billion</li><li data-correct="true">C) 10 Billion</li><li>D) 20 Billion</li></ul></div>
+        <div class="question-block"><h2>5. What percentage of tokens is allocated to the Community?</h2><ul class="options"><li>A) 20%</li><li data-correct="true">B) 50%</li><li>C) 10%</li><li>D) 30%</li></ul></div>
+        <div class="question-block"><h2>6. When does the vesting for Core Team & Contributors begin?</h2><ul class="options"><li>A) Immediately at TGE</li><li>B) After 3 months</li><li data-correct="true">C) After 9 months</li><li>D) After 12 months</li></ul></div>
+        <div class="question-block"><h2>7. How many additional tokens (inflation) will be issued in the first year?</h2><ul class="options"><li>A) 100 Million</li><li data-correct="true">B) 500 Million</li><li>C) 1 Billion</li><li>D) 50 Million</li></ul></div>
+        <div class="question-block"><h2>8. What must storage operators provide in order to run services on DataHaven?</h2><ul class="options"><li>A) No guarantee required</li><li data-correct="true">B) $HAVE tokens as collateral</li><li>C) Other blockchain tokens</li><li>D) Land rights</li></ul></div>
+        <div class="question-block"><h2>9. What percentage of tokens will unlock at TGE?</h2><ul class="options"><li>A) 5%</li><li data-correct="true">B) 11%</li><li>C) 20%</li><li>D) 50%</li></ul></div>
+        <div class="question-block"><h2>10. What governance rights do token holders have?</h2><ul class="options"><li>A) Only mint new tokens</li><li data-correct="true">B) Vote on proposals, set fees, elect council</li><li>C) Only sell their tokens</li><li>D) Redeem tokens</li></ul></div>
+
+        <div class="results-block">
+            <h2>Quiz Complete!</h2>
+            <h3 id="rank-heading"></h3>
+            <div class="stats-container">
+                <p>Total Questions: <span id="total-questions-final"></span></p>
+                <p>✅ Correct: <span id="correct-answers"></span></p>
+                <p>❌ Incorrect: <span id="incorrect-answers"></span></p>
+                <p>📊 Percentage: <span id="percentage"></span>%</p>
+            </div>
+            <button id="restart-button">Try Again</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const questions = document.querySelectorAll('.question-block');
+            const quizTitle = document.querySelector('.quiz-title');
+            const resultBlock = document.querySelector('.results-block');
+            let currentQuestionIndex = 0;
+            let score = 0;
+            function showResults() {
+                quizTitle.style.display = 'none';
+                questions.forEach(q => q.style.display = 'none');
+                const totalQuestions = questions.length;
+                const incorrectAnswers = totalQuestions - score;
+                const percentage = Math.round((score / totalQuestions) * 100);
+                document.getElementById('total-questions-final').textContent = totalQuestions;
+                document.getElementById('correct-answers').textContent = score;
+                document.getElementById('incorrect-answers').textContent = incorrectAnswers;
+                document.getElementById('percentage').textContent = percentage;
+                const rankHeading = document.getElementById('rank-heading');
+                if (percentage >= 90) {
+                    rankHeading.textContent = 'Excellent! 🚀';
+                    rankHeading.className = 'rank-excellent';
+                } else if (percentage >= 75) {
+                    rankHeading.textContent = 'Very Good! 👍';
+                    rankHeading.className = 'rank-very-good';
+                } else if (percentage >= 60) {
+                    rankHeading.textContent = 'Good Job! 🙂';
+                    rankHeading.className = 'rank-good';
+                } else if (percentage >= 40) {
+                    rankHeading.textContent = 'Needs Improvement 📚';
+                    rankHeading.className = 'rank-needs-improvement';
+                } else {
+                    rankHeading.textContent = 'Keep Practicing 🔄';
+                    rankHeading.className = 'rank-practice';
+                }
+                resultBlock.style.display = 'block';
+            }
+            questions.forEach((question) => {
+                const options = question.querySelectorAll('.options li');
+                options.forEach(option => {
+                    option.addEventListener('click', () => {
+                        question.classList.add('answered');
+                        if (option.getAttribute('data-correct') === 'true') {
+                            option.classList.add('correct');
+                            score++;
+                        } else {
+                            option.classList.add('incorrect');
+                            const correctAnswer = question.querySelector('li[data-correct="true"]');
+                            correctAnswer.classList.add('correct');
+                        }
+                        setTimeout(() => {
+                            const currentQ = questions[currentQuestionIndex];
+                            currentQ.classList.remove('active');
+                            currentQuestionIndex++;
+                            if (currentQuestionIndex < questions.length) {
+                                questions[currentQuestionIndex].classList.add('active');
+                            } else {
+                                showResults();
+                            }
+                        }, 2000);
+                    });
+                });
+            });
+            document.getElementById('restart-button').addEventListener('click', () => {
+                location.reload();
+            });
+        });
+    </script>
+</body>
+</html>
